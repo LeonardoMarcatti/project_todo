@@ -34,3 +34,12 @@ section {
   align-items: center;
   justify-content: center;
 }
+
+table {
+  min-width: 300px;
+  max-width: 900px;
+}
+
+#editarModal, #deleteModal, #concluirModal {
+  color: black;
+}

@@ -12,9 +12,14 @@ class TarefasModel extends Model
     public function getTarefas(int|null $status)
     {
       if ($status != 0) {
-        return $this->select('descricao')->where('status_id', $status)->get()->getResultArray();
+        return $this->select(['descricao', 'id'])->where('status_id', $status)->get()->getResultArray();
       }
 
-      return $this->select('descricao')->where('status_id', 1)->get()->getResultArray();
+      return $this->select(['descricao', 'id'])->where('status_id', 1)->get()->getResultArray();
+    }
+
+    public function deleteTarefa(int $id)
+    {
+      return $this->delete(['id' => $id]);
     }
 }

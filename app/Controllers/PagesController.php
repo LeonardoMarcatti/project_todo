@@ -38,4 +38,12 @@ class PagesController extends BaseController
             return redirect()->to('/');
         }
     }
+
+    public function delete()
+    {
+        $id = filter_input(\INPUT_GET, 'id', \FILTER_SANITIZE_NUMBER_INT);
+        $delete = \model(TarefasModel::class);
+        $delete->deleteTarefa($id);
+        return redirect()->to('/');
+    }
 }

@@ -37,6 +37,7 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'PagesController::index');
 $routes->get('/list', 'PagesController::index');
+$routes->get('/delete/', 'PagesController::delete');
 
 $routes->match(['get', 'post'], 'create', 'PagesController::create');
 
