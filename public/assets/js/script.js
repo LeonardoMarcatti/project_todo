@@ -5,5 +5,9 @@ btns.forEach(btn => {
       if (id === 'deletar') {
         document.querySelector('#delLink').setAttribute('href', `delete/?id=${value}`);
       }
+
+      if (id === 'concluir') {
+        document.querySelector('#concluirLink').setAttribute('href', `concluir/?id=${value}`);
+      }
     });
 });

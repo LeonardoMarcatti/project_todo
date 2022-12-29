@@ -22,4 +22,9 @@ class TarefasModel extends Model
     {
       return $this->delete(['id' => $id]);
     }
+
+    public function updateTarefa(int $id)
+    {
+      return $this->set('status_id', 2)->where('id', $id)->update();
+    }
 }

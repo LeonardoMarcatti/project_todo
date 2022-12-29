@@ -40,6 +40,7 @@ $routes->get('/list', 'PagesController::index');
 $routes->get('/delete/', 'PagesController::delete');
 
 $routes->match(['get', 'post'], 'create', 'PagesController::create');
+$routes->match(['get', 'post'], 'concluir', 'PagesController::update');
 
 /*
  * --------------------------------------------------------------------

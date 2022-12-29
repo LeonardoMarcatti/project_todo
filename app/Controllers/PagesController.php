@@ -46,4 +46,12 @@ class PagesController extends BaseController
         $delete->deleteTarefa($id);
         return redirect()->to('/');
     }
+
+    public function update()
+    {
+        $id = filter_input(\INPUT_GET, 'id', \FILTER_SANITIZE_NUMBER_INT);
+        $update = \model(TarefasModel::class);
+        $update->updateTarefa($id);
+        return redirect()->to('/');
+    }
 }

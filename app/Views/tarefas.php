@@ -54,9 +54,9 @@
               <tr>
                 <td><?=$tarefa['descricao']?></td>
                 <td>
-                  <button type="button" value="<?=$tarefa['id']?>" id="editar" class="btn btn-success acao" data-bs-toggle="modal" data-bs-target="#editarModal"><i class="fa-solid fa-pen"></i> Editar</button>
-                  <button type="button" value="<?=$tarefa['id']?>" id="concluir" class="btn btn-primary acao" data-bs-toggle="modal" data-bs-target="#concluirModal"><i class="fa-solid fa-check"></i> Concluir</button>
-                  <button type="button" value="<?=$tarefa['id']?>" id="deletar" class="btn btn-danger acao" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fa-solid fa-trash-can"></i> Deletar</button>
+                  <button type="button" value="<?=$tarefa['id']?>" id="editar" class="btn btn-outline-success acao" data-bs-toggle="modal" data-bs-target="#editarModal"><i class="fa-solid fa-pen"></i> Editar</button>
+                  <button type="button" value="<?=$tarefa['id']?>" id="concluir" class="btn btn-outline-warning acao" data-bs-toggle="modal" data-bs-target="#concluirModal"><i class="fa-solid fa-check"></i> Concluir</button>
+                  <button type="button" value="<?=$tarefa['id']?>" id="deletar" class="btn btn-outline-danger acao" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fa-solid fa-trash-can"></i> Deletar</button>
                 </td>
               </tr>
         <?php  }; ?>
@@ -91,11 +91,12 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            ...
+            Deseja realmente concluir a tarefa?
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <a href="concluir/?"></a>
+            <a id="concluirLink"><button type="button" class="btn btn-warning"><i class="fa-solid fa-check"></i> Concluir</button></a>
           </div>
         </div>
       </div>
@@ -112,7 +113,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
-            <a href="delete/?id=" id="delLink"><button type="button" class="btn btn-danger"><i class="fa-solid fa-trash-can" id="modalDeleteBtn"></i> Deletar</button></a>
+            <a id="delLink"><button type="button" class="btn btn-danger"><i class="fa-solid fa-trash-can" id="modalDeleteBtn"></i> Deletar</button></a>
           </div>
         </div>
       </div>
