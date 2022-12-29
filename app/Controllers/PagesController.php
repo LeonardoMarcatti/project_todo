@@ -1,11 +1,41 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\TarefasModel;
+use App\Models\StatusModel;
 
 class PagesController extends BaseController
 {
-    public function teste()
+    private ?array $data;
+
+    private function getStatusList()
     {
-        return view('Views/templates/header') . view('Views/teste') . view('Views/templates/footer');
+        $statusModel = \model(StatusModel::class);
+        $this->data['status'] = $statusModel->index();
+    }
+
+    public function index()
+    {
+        if (! is_file(APPPATH . 'Views/tarefas.php')) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Tarefas');
+        };
+        
+        $statusID = filter_input(\INPUT_GET, 'status', \FILTER_SANITIZE_NUMBER_INT);
+
+        $tarefasModel = \model(TarefasModel::class);
+        $this->data['tarefas'] = $tarefasModel->getTarefas($statusID);
+        $this->getStatusList();
+        return view('Views/templates/header') . view('Views/tarefas', $this->data) . view('Views/templates/footer');
+    }
+
+    public function create()
+    {
+        if ($this->request->getMethod() === 'post' && $this->validate(
+            ['descricao' => 'required'])) {
+
+            $create = model(TarefasModel::class);
+            $create->save(['descricao' => $this->request->getPost('descricao'), 'status_id' => 1]);
+            return redirect()->to('/');
+        }
     }
 }

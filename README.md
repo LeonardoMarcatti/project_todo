@@ -11,7 +11,7 @@
   1.4 - Edite o arquivo .env 
     1.4.1 - CI_ENVIROMENT = 'development'
     1.4.2 - app.baseURL = 'ip_server/teste-todo-list/project_todo/public/'
-    1.4.3 - database.default.hostname = localhost
+    1.4.3 - database.default.hostname = ip_server_db
     1.4.4 - database.default.database = todo_leonardo
     1.4.5 - database.default.username = seu_usuario
     1.4.6 - database.default.password = sua_senha
