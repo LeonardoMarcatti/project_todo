@@ -20,11 +20,16 @@ class TarefasModel extends Model
 
     public function deleteTarefa(int $id)
     {
-      return $this->delete(['id' => $id]);
+      return $this->set('status_id', 3)->where('id', $id)->update();
     }
 
     public function updateTarefa(int $id)
     {
       return $this->set('status_id', 2)->where('id', $id)->update();
+    }
+
+    public function editTarefa(int $id, string $txt)
+    {
+      return $this->set('descricao', $txt)->where('id', $id)->update();
     }
 }

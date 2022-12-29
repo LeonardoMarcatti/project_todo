@@ -67,21 +67,24 @@
         <?php }; ?>
     </div>
     <div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="editarModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="editarModalLabel">Editar Tarefa</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            Editar
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+      <form method="post" id="editForm">
+        <?= csrf_field() ?>
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="editarModalLabel">Editar Tarefa</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <textarea name="editText" id="editText" cols="30" rows="10" class="form-control" required></textarea>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-success"><i class="fa-solid fa-pen"></i> Editar</button>
+            </div>
           </div>
         </div>
-      </div>
+      </form>
     </div>
     <div class="modal fade" id="concluirModal" tabindex="-1" aria-labelledby="concluirModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -94,7 +97,7 @@
             Deseja realmente concluir a tarefa?
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
             <a href="concluir/?"></a>
             <a id="concluirLink"><button type="button" class="btn btn-warning"><i class="fa-solid fa-check"></i> Concluir</button></a>
           </div>
@@ -112,7 +115,7 @@
             <p>Deseja realmente deletar a tarefa?</p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
             <a id="delLink"><button type="button" class="btn btn-danger"><i class="fa-solid fa-trash-can" id="modalDeleteBtn"></i> Deletar</button></a>
           </div>
         </div>

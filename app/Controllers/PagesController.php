@@ -54,4 +54,15 @@ class PagesController extends BaseController
         $update->updateTarefa($id);
         return redirect()->to('/');
     }
+
+    public function editar()
+    {
+        if ($this->request->getMethod() === 'post' && $this->validate(['editText' => 'required'])) {
+            $id = \intval(filter_input(\INPUT_GET, 'id', \FILTER_SANITIZE_NUMBER_INT));
+            $txt = $this->request->getPost('editText');
+            $edit = \model(TarefasModel::class);
+            $edit->editTarefa($id, $txt);
+            return redirect()->to('/');
+        }
+    }
 }
