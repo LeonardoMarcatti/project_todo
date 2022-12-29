@@ -39,6 +39,9 @@ $routes->get('/', 'PagesController::index');
 $routes->get('/list', 'PagesController::index');
 $routes->get('/delete/', 'PagesController::delete');
 $routes->get('/refazer', 'PagesController::refazer');
+$routes->get('/restaurar', 'PagesController::restaurar');
+$routes->get('/deletarTodas', 'PagesController::deletarTodas');
+$routes->get('/concluirTodas', 'PagesController::concluirTodas');
 
 $routes->match(['get', 'post'], 'create', 'PagesController::create');
 $routes->match(['get', 'post'], 'concluir', 'PagesController::update');

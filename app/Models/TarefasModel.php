@@ -37,4 +37,14 @@ class TarefasModel extends Model
     {
       return $this->set('status_id', 1)->where('id', $id)->update();
     }
+
+    public function deleteTodos()
+    {
+      return $this->set('status_id', 3)->where('status_id', 1)->update();
+    }
+
+    public function concluirTodos()
+    {
+      return $this->set('status_id', 2)->where('status_id', 1)->update();
+    }
 }

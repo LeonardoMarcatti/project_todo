@@ -43,6 +43,10 @@
       <?php
         if (count($tarefas) > 0 && ($statusID == 1 || $statusID == null)) { ?>
           <h3>Lista de Tarefas a Fazer</h3>
+          <div id="all" class="float-end">
+            <button type="button" class="btn btn-warning flost-end" data-bs-toggle="modal" data-bs-target="#concluirTodasModal"><i class="fa-solid fa-check"></i> Concluir Todas</button>
+            <button type="button" class="btn btn-danger float-end" data-bs-toggle="modal" data-bs-target="#deletarTodasModal"><i class="fa-solid fa-trash-can"></i> Deletar Todas</button>
+          </div>
           <table class="table table-hover table-borderless table-striped table-dark align-middle">
             <thead class="table-light">
               <tr class="text-center">
@@ -64,9 +68,6 @@
         <?php  }; ?>
           </tbody>
         </table>
-        <button type="submit">a</button>
-        <button type="submit">b</button>
-
         <?php } else if(count($tarefas) > 0 && ($statusID == 2)) { ?>
           <h3>Lista de Tarefas Feitas</h3>
           <table class="table table-hover table-borderless table-striped table-dark align-middle">
@@ -103,7 +104,7 @@
               <tr>
                 <td><?=$tarefa['descricao']?></td>
                 <td class="text-center">
-                  <a href="refazer?id=<?=$tarefa['id']?>"> <button type="button" value="<?=$tarefa['id']?>" id="restaurar" class="btn btn-outline-success acao" ><i class="fa-solid fa-trash-can-arrow-up"></i> Restaurar</button></a>
+                  <a href="restaurar?id=<?=$tarefa['id']?>"> <button type="button" value="<?=$tarefa['id']?>" id="restaurar" class="btn btn-outline-success acao" ><i class="fa-solid fa-trash-can-arrow-up"></i> Restaurar</button></a>
                 </td>
               </tr>
         <?php  }; ?>
@@ -162,6 +163,40 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
             <a id="delLink"><button type="button" class="btn btn-danger"><i class="fa-solid fa-trash-can" id="modalDeleteBtn"></i> Deletar</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="concluirTodasModal" tabindex="-1" aria-labelledby="concluirTodasModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="concluirTodasModalLabel">Concluir Todas</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Deseja realmente concluir todas as tarefas?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <a href="concluirTodas"><button type="button" class="btn btn-warning"><i class="fa-solid fa-check"></i> Concluir Todas</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="deletarTodasModal" tabindex="-1" aria-labelledby="deletarTodasModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="deletarTodasModalLabel">Deletar Todas</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Deseja realmente deletar todas as tarefas?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <a href="deletarTodas"><button type="button" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i> Deletar Todas</button></a>
           </div>
         </div>
       </div>

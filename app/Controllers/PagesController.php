@@ -72,6 +72,28 @@ class PagesController extends BaseController
         $id = filter_input(\INPUT_GET, 'id', \FILTER_SANITIZE_NUMBER_INT);
         $model = \model(TarefasModel::class);
         $model->refazer($id);
+        return redirect()->to('/?status=2');
+    }
+
+    public function restaurar()
+    {
+        $id = filter_input(\INPUT_GET, 'id', \FILTER_SANITIZE_NUMBER_INT);
+        $model = \model(TarefasModel::class);
+        $model->refazer($id);
+        return redirect()->to('/?status=3');
+    }
+
+    public function concluirTodas()
+    {
+        $model = \model(TarefasModel::class);
+        $model->concluirTodos();
+        return redirect()->to('/');
+    }
+
+    public function deletarTodas()
+    {
+        $model = \model(TarefasModel::class);
+        $model->deleteTodos();
         return redirect()->to('/');
     }
 }
