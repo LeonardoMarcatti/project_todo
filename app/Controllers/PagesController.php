@@ -22,8 +22,9 @@ class PagesController extends BaseController
         
         $statusID = filter_input(\INPUT_GET, 'status', \FILTER_SANITIZE_NUMBER_INT);
 
-        $tarefasModel = \model(TarefasModel::class);
-        $this->data['tarefas'] = $tarefasModel->getTarefas($statusID);
+        $model = \model(TarefasModel::class);
+        $this->data['tarefas'] = $model->getTarefas($statusID);
+        $this->data['statusID'] = $statusID;
         $this->getStatusList();
         return view('Views/templates/header') . view('Views/tarefas', $this->data) . view('Views/templates/footer');
     }
@@ -33,8 +34,8 @@ class PagesController extends BaseController
         if ($this->request->getMethod() === 'post' && $this->validate(
             ['descricao' => 'required'])) {
 
-            $create = model(TarefasModel::class);
-            $create->save(['descricao' => $this->request->getPost('descricao'), 'status_id' => 1]);
+            $model = model(TarefasModel::class);
+            $model->save(['descricao' => $this->request->getPost('descricao'), 'status_id' => 1]);
             return redirect()->to('/');
         }
     }
@@ -42,27 +43,35 @@ class PagesController extends BaseController
     public function delete()
     {
         $id = filter_input(\INPUT_GET, 'id', \FILTER_SANITIZE_NUMBER_INT);
-        $delete = \model(TarefasModel::class);
-        $delete->deleteTarefa($id);
+        $model = \model(TarefasModel::class);
+        $model->deleteTarefa($id);
         return redirect()->to('/');
     }
 
     public function update()
     {
         $id = filter_input(\INPUT_GET, 'id', \FILTER_SANITIZE_NUMBER_INT);
-        $update = \model(TarefasModel::class);
-        $update->updateTarefa($id);
+        $model = \model(TarefasModel::class);
+        $model->updateTarefa($id);
         return redirect()->to('/');
     }
 
     public function editar()
     {
         if ($this->request->getMethod() === 'post' && $this->validate(['editText' => 'required'])) {
-            $id = \intval(filter_input(\INPUT_GET, 'id', \FILTER_SANITIZE_NUMBER_INT));
+            $id = filter_input(\INPUT_GET, 'id', \FILTER_SANITIZE_NUMBER_INT);
             $txt = $this->request->getPost('editText');
-            $edit = \model(TarefasModel::class);
-            $edit->editTarefa($id, $txt);
+            $model = \model(TarefasModel::class);
+            $model->editTarefa($id, $txt);
             return redirect()->to('/');
         }
+    }
+
+    public function refazer()
+    {
+        $id = filter_input(\INPUT_GET, 'id', \FILTER_SANITIZE_NUMBER_INT);
+        $model = \model(TarefasModel::class);
+        $model->refazer($id);
+        return redirect()->to('/');
     }
 }

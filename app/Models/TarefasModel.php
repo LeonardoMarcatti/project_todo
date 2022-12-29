@@ -32,4 +32,9 @@ class TarefasModel extends Model
     {
       return $this->set('descricao', $txt)->where('id', $id)->update();
     }
+
+    public function refazer(int $id)
+    {
+      return $this->set('status_id', 1)->where('id', $id)->update();
+    }
 }

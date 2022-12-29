@@ -11,9 +11,11 @@ btns.forEach(btn => {
       }
 
       if (id === 'editar') {
-        document.querySelector('#editForm').setAttribute('action', `editar?id=${value}`);
-        const txt = e.target.closest('tr').children[0].innerText;
-        document.querySelector('#editText').innerHTML = txt;
+        setTimeout(() => {
+          document.querySelector('#editForm').setAttribute('action', `editar?id=${value}`);
+          const txt = e.target.closest('tr').children[0].innerText;
+          document.querySelector('#editText').innerHTML = txt;
+        }, 200);
       }
     });
 });
