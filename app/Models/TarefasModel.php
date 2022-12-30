@@ -11,8 +11,8 @@ class TarefasModel extends Model
 
     public function getTarefas(int|null $status)
     {
-      if ($status != 0) {
-        return $this->select(['descricao', 'id'])->where('status_id', $status)->get()->getResultArray();
+      if ($status && $status != 1) {
+        return $this->select(['descricao', 'id'])->where('status_id', $status)->orderBy('id', 'desc')->limit(10)->get()->getResultArray();
       }
 
       return $this->select(['descricao', 'id'])->where('status_id', 1)->get()->getResultArray();

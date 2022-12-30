@@ -47,7 +47,7 @@
             <button type="button" class="btn btn-warning flost-end" data-bs-toggle="modal" data-bs-target="#concluirTodasModal"><i class="fa-solid fa-check"></i> Concluir Todas</button>
             <button type="button" class="btn btn-danger float-end" data-bs-toggle="modal" data-bs-target="#deletarTodasModal"><i class="fa-solid fa-trash-can"></i> Deletar Todas</button>
           </div>
-          <table class="table table-hover table-borderless table-striped table-dark align-middle">
+          <table class="table table-hover table-bordered table-striped table-dark align-middle">
             <thead class="table-light">
               <tr class="text-center">
                 <th scope="col">Tarefa</th>
